@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/activity/screens/activity_screen.dart';
+import '../../features/calendar/screens/calendar_screen.dart';
 import '../../features/documents/screens/document_vault_screen.dart';
+import '../../features/dreamhome/screens/dream_home_screen.dart';
 import '../../features/family/screens/family_screen.dart';
 import '../../features/finance/screens/finance_screen.dart';
 import '../../features/food/screens/food_tracker_screen.dart';
@@ -10,12 +12,14 @@ import '../../features/goals/screens/goals_screen.dart';
 import '../../features/health/screens/health_dashboard_screen.dart';
 import '../../features/home/screens/home_dashboard_screen.dart';
 import '../../features/journal/screens/journal_screen.dart';
+import '../../features/mentalwellness/screens/mental_wellness_screen.dart';
 import '../../features/menu/screens/menu_screen.dart';
 import '../../features/products/screens/products_screen.dart';
 import '../../features/school/screens/school_screen.dart';
 import '../../features/selfcare/screens/selfcare_screen.dart';
 import '../../features/services/screens/services_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
+import '../../features/shopping/screens/shopping_screen.dart';
 import '../../features/work/screens/work_screen.dart';
 
 final GoRouter appRouter = GoRouter(
@@ -120,7 +124,25 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/calendar',
       builder: (context, state) {
-        return const AppRouterPlaceholder(title: 'Calendar');
+        return const CalendarScreen();
+      },
+    ),
+    GoRoute(
+      path: '/shopping',
+      builder: (context, state) {
+        return const ShoppingScreen();
+      },
+    ),
+    GoRoute(
+      path: '/dreamhome',
+      builder: (context, state) {
+        return const DreamHomeScreen();
+      },
+    ),
+    GoRoute(
+      path: '/mentalwellness',
+      builder: (context, state) {
+        return const MentalWellnessScreen();
       },
     ),
   ],
