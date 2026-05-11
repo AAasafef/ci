@@ -15,27 +15,6 @@ class FinanceScreen extends StatefulWidget {
 
 class _FinanceScreenState
     extends State<FinanceScreen> {
-  final List<DebtItem> debts = [
-    DebtItem(
-      title: 'Capital One',
-      balance: '\$3,842',
-      status: 'Credit Card',
-      dueDate: 'Due May 24',
-    ),
-    DebtItem(
-      title: 'Student Loan',
-      balance: '\$12,400',
-      status: 'Federal',
-      dueDate: 'Due June 2',
-    ),
-    DebtItem(
-      title: 'Collections',
-      balance: '\$680',
-      status: 'Medical',
-      dueDate: 'In Collections',
-    ),
-  ];
-
   Widget _heroCard() {
     return GlassCard(
       radius: 34,
@@ -55,7 +34,7 @@ class _FinanceScreenState
           ),
           const SizedBox(height: 16),
           const Text(
-            'Your financial\ncontrol center.',
+            'Luxury money\nmanagement.',
             style: TextStyle(
               color: Color(0xFF2F241E),
               fontSize: 28,
@@ -65,7 +44,7 @@ class _FinanceScreenState
           ),
           const SizedBox(height: 12),
           const Text(
-            'Track debt, credit, budgeting, income, collections, and financial goals beautifully.',
+            'Track bills, debt, subscriptions, savings, goals, income, spending, and future financial growth.',
             style: TextStyle(
               color: Color(0xFF7B6657),
               fontSize: 14,
@@ -83,137 +62,11 @@ class _FinanceScreenState
     );
   }
 
-  Widget _overviewCard({
-    required String label,
-    required String value,
-    required IconData icon,
-  }) {
-    return Expanded(
-      child: GlassCard(
-        radius: 24,
-        opacity: 0.34,
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              color: const Color(0xFF6A4429),
-              size: 22,
-            ),
-            const SizedBox(height: 10),
-            Text(
-              value,
-              style: const TextStyle(
-                color: Color(0xFF2F241E),
-                fontSize: 22,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Color(0xFF7B6657),
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _debtCard(DebtItem debt) {
-    return GlassCard(
-      radius: 30,
-      opacity: 0.42,
-      child: Row(
-        children: [
-          Container(
-            width: 58,
-            height: 58,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: const Color(
-                0xFF8A6548,
-              ).withOpacity(0.16),
-            ),
-            child: const Icon(
-              Icons.account_balance_wallet,
-              color: Color(0xFF6A4429),
-              size: 28,
-            ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start,
-              children: [
-                Text(
-                  debt.title,
-                  style: const TextStyle(
-                    color:
-                        Color(0xFF2F241E),
-                    fontSize: 18,
-                    fontWeight:
-                        FontWeight.w800,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  debt.status,
-                  style: const TextStyle(
-                    color:
-                        Color(0xFF7B6657),
-                    fontSize: 13,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  debt.dueDate,
-                  style: const TextStyle(
-                    color:
-                        Color(0xFF7B6657),
-                    fontSize: 11,
-                    fontWeight:
-                        FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.end,
-            children: [
-              Text(
-                debt.balance,
-                style: const TextStyle(
-                  color: Color(0xFF6A4429),
-                  fontSize: 22,
-                  fontWeight:
-                      FontWeight.w900,
-                ),
-              ),
-              const SizedBox(height: 8),
-              const Icon(
-                Icons.arrow_forward_ios,
-                color: Color(0xFF8A6D58),
-                size: 14,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _insightCard({
+  Widget _moneyCard({
     required String title,
     required String subtitle,
+    required String amount,
+    required IconData icon,
   }) {
     return GlassCard(
       radius: 30,
@@ -221,17 +74,26 @@ class _FinanceScreenState
       child: Row(
         children: [
           Container(
-            width: 54,
-            height: 54,
+            width: 68,
+            height: 68,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: const Color(
-                0xFF8A6548,
-              ).withOpacity(0.16),
+              borderRadius:
+                  BorderRadius.circular(22),
+              gradient:
+                  const LinearGradient(
+                begin: Alignment.topLeft,
+                end:
+                    Alignment.bottomRight,
+                colors: [
+                  Color(0xFF9A765C),
+                  Color(0xFF6A4B38),
+                ],
+              ),
             ),
-            child: const Icon(
-              Icons.auto_awesome,
-              color: Color(0xFF6A4429),
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 32,
             ),
           ),
           const SizedBox(width: 16),
@@ -245,7 +107,7 @@ class _FinanceScreenState
                   style: const TextStyle(
                     color:
                         Color(0xFF2F241E),
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight:
                         FontWeight.w800,
                   ),
@@ -263,12 +125,157 @@ class _FinanceScreenState
               ],
             ),
           ),
+          Column(
+            children: [
+              Text(
+                amount,
+                style: const TextStyle(
+                  color: Color(0xFF2F241E),
+                  fontSize: 18,
+                  fontWeight:
+                      FontWeight.w900,
+                ),
+              ),
+              const SizedBox(height: 4),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: Color(0xFF8A6D58),
+                size: 14,
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 
-  Widget _bottomNav(BuildContext context) {
+  Widget _overviewCard({
+    required String label,
+    required String value,
+    required IconData icon,
+  }) {
+    return Expanded(
+      child: GlassCard(
+        radius: 24,
+        opacity: 0.34,
+        padding:
+            const EdgeInsets.all(14),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              color: const Color(
+                0xFF6A4429,
+              ),
+              size: 22,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              value,
+              style: const TextStyle(
+                color: Color(
+                  0xFF2F241E,
+                ),
+                fontSize: 22,
+                fontWeight:
+                    FontWeight.w800,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              textAlign:
+                  TextAlign.center,
+              style: const TextStyle(
+                color: Color(
+                  0xFF7B6657,
+                ),
+                fontSize: 11,
+                fontWeight:
+                    FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _creditInsightCard() {
+    return GlassCard(
+      radius: 32,
+      opacity: 0.44,
+      child: Column(
+        crossAxisAlignment:
+            CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'AI Financial Insights',
+            style: TextStyle(
+              color: Color(0xFF2F241E),
+              fontSize: 22,
+              fontWeight:
+                  FontWeight.w800,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            'Your app will eventually analyze debt, suggest payoff strategies, estimate credit impact, and help improve financial habits.',
+            style: TextStyle(
+              color: Color(0xFF7B6657),
+              fontSize: 13,
+              height: 1.45,
+            ),
+          ),
+          const SizedBox(height: 18),
+          Container(
+            padding:
+                const EdgeInsets.all(
+              18,
+            ),
+            decoration:
+                BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(
+                24,
+              ),
+              color: Colors.white
+                  .withOpacity(
+                0.24,
+              ),
+            ),
+            child: const Row(
+              children: [
+                Icon(
+                  Icons.auto_awesome,
+                  color:
+                      Color(0xFF6A4429),
+                ),
+                SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    '“Paying \$120 more monthly could reduce payoff time by 18 months.”',
+                    style: TextStyle(
+                      color: Color(
+                          0xFF2F241E),
+                      fontSize: 13,
+                      fontWeight:
+                          FontWeight
+                              .w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _bottomNav(
+    BuildContext context,
+  ) {
     return Container(
       height: 74,
       padding:
@@ -276,48 +283,52 @@ class _FinanceScreenState
         horizontal: 12,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(
-          0.42,
-        ),
+        color: Colors.white
+            .withOpacity(0.42),
         borderRadius:
-            BorderRadius.circular(28),
+            BorderRadius.circular(
+          28,
+        ),
         border: Border.all(
-          color: Colors.white.withOpacity(
-            0.55,
-          ),
+          color: Colors.white
+              .withOpacity(0.55),
         ),
       ),
       child: Row(
         mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
+            MainAxisAlignment
+                .spaceAround,
         children: [
           _NavItem(
-            icon: Icons.home_outlined,
+            icon:
+                Icons.home_outlined,
             label: 'home',
             onTap: () {
               context.go('/home');
             },
           ),
           _NavItem(
-            icon: Icons.favorite_border,
-            label: 'health',
-            onTap: () {
-              context.go('/health');
-            },
+            icon:
+                Icons.account_balance_wallet_outlined,
+            label: 'finance',
+            active: true,
+            onTap: () {},
           ),
           _NavItem(
-            icon: Icons.article_outlined,
-            label: 'journal',
+            icon:
+                Icons.auto_awesome,
+            label: 'assistant',
             onTap: () {
-              context.go('/journal');
+              context.go('/assistant');
             },
           ),
           _NavItem(
             icon:
-                Icons.account_balance_wallet,
-            label: 'finance',
-            active: true,
-            onTap: () {},
+                Icons.shopping_bag_outlined,
+            label: 'shopping',
+            onTap: () {
+              context.go('/shopping');
+            },
           ),
           _NavItem(
             icon: Icons.menu,
@@ -332,10 +343,22 @@ class _FinanceScreenState
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Scaffold(
       backgroundColor:
           const Color(0xFFE8DED2),
+      floatingActionButton:
+          FloatingActionButton(
+        backgroundColor:
+            const Color(0xFF8A5C34),
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
       body: ScenicBackground(
         child: SafeArea(
           child: Padding(
@@ -352,12 +375,15 @@ class _FinanceScreenState
                   children: [
                     IconButton(
                       onPressed: () {
-                        context.go('/menu');
+                        context.go(
+                          '/menu',
+                        );
                       },
                       icon: const Icon(
                         Icons
                             .arrow_back_ios_new,
-                        color: Colors.white,
+                        color:
+                            Colors.white,
                         size: 18,
                       ),
                     ),
@@ -365,10 +391,12 @@ class _FinanceScreenState
                       child: Center(
                         child: Text(
                           'Finance',
-                          style: TextStyle(
-                            color:
-                                Colors.white,
-                            fontSize: 18,
+                          style:
+                              TextStyle(
+                            color: Colors
+                                .white,
+                            fontSize:
+                                18,
                             fontWeight:
                                 FontWeight
                                     .w600,
@@ -381,13 +409,15 @@ class _FinanceScreenState
                       height: 42,
                       decoration:
                           BoxDecoration(
-                        shape:
-                            BoxShape.circle,
-                        color: Colors.white
+                        shape: BoxShape
+                            .circle,
+                        color: Colors
+                            .white
                             .withOpacity(
                           0.22,
                         ),
-                        border: Border.all(
+                        border:
+                            Border.all(
                           color: Colors
                               .white
                               .withOpacity(
@@ -395,10 +425,12 @@ class _FinanceScreenState
                           ),
                         ),
                       ),
-                      child: const Icon(
+                      child:
+                          const Icon(
                         Icons
                             .account_balance_wallet,
-                        color: Colors.white,
+                        color: Colors
+                            .white,
                         size: 22,
                       ),
                     ),
@@ -411,12 +443,16 @@ class _FinanceScreenState
                         height: 18,
                       ),
                       const Text(
-                        'Debt &\nfinances.',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 34,
+                        'Money &\nwealth.',
+                        style:
+                            TextStyle(
+                          color: Colors
+                              .white,
+                          fontSize:
+                              34,
                           fontWeight:
-                              FontWeight.w600,
+                              FontWeight
+                                  .w600,
                           height: 1.05,
                         ),
                       ),
@@ -424,11 +460,14 @@ class _FinanceScreenState
                         height: 10,
                       ),
                       const Text(
-                        'Financial clarity without overwhelm.',
-                        style: TextStyle(
-                          color:
-                              Color(0xFFF0E6DE),
-                          fontSize: 14,
+                        'Luxury financial organization.',
+                        style:
+                            TextStyle(
+                          color: Color(
+                            0xFFF0E6DE,
+                          ),
+                          fontSize:
+                              14,
                         ),
                       ),
                       const SizedBox(
@@ -442,70 +481,79 @@ class _FinanceScreenState
                         children: [
                           _overviewCard(
                             label:
+                                'Savings',
+                            value:
+                                '\$4.2k',
+                            icon:
+                                Icons.savings_outlined,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          _overviewCard(
+                            label:
+                                'Bills',
+                            value:
+                                '12',
+                            icon:
+                                Icons.receipt_long_outlined,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          _overviewCard(
+                            label:
                                 'Debt',
                             value:
-                                '\$16k',
-                            icon: Icons
-                                .account_balance_wallet_outlined,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          _overviewCard(
-                            label:
-                                'Accounts',
-                            value: '6',
-                            icon: Icons
-                                .credit_card_outlined,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          _overviewCard(
-                            label:
-                                'Score',
-                            value:
-                                '642',
-                            icon: Icons
-                                .analytics_outlined,
+                                '\$18k',
+                            icon:
+                                Icons.credit_card_outlined,
                           ),
                         ],
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      ...debts.map(
-                        (debt) {
-                          return Padding(
-                            padding:
-                                const EdgeInsets.only(
-                              bottom: 14,
-                            ),
-                            child:
-                                _debtCard(
-                              debt,
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      _insightCard(
+                      _moneyCard(
                         title:
-                            'AI Insight',
+                            'Monthly Bills',
                         subtitle:
-                            'Paying off the \$680 medical collection first may improve your utilization and reduce collection pressure.',
+                            'Track recurring expenses, due dates, and reminders.',
+                        amount:
+                            '\$2.1k',
+                        icon:
+                            Icons.calendar_month,
                       ),
                       const SizedBox(
                         height: 14,
                       ),
-                      _insightCard(
+                      _moneyCard(
                         title:
-                            'Smart Recommendation',
+                            'Debt Payoff',
                         subtitle:
-                            'Your app will eventually simulate payoff strategies, disputes, settlement estimates, and timeline projections.',
+                            'Credit cards, collections, loans, and payment plans.',
+                        amount:
+                            '\$18k',
+                        icon:
+                            Icons.trending_down,
                       ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      _moneyCard(
+                        title:
+                            'Savings Goals',
+                        subtitle:
+                            'Emergency fund, luxury purchases, and future planning.',
+                        amount:
+                            '\$4.2k',
+                        icon:
+                            Icons.savings,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      _creditInsightCard(),
                       const SizedBox(
                         height: 90,
                       ),
@@ -522,21 +570,8 @@ class _FinanceScreenState
   }
 }
 
-class DebtItem {
-  final String title;
-  final String balance;
-  final String status;
-  final String dueDate;
-
-  DebtItem({
-    required this.title,
-    required this.balance,
-    required this.status,
-    required this.dueDate,
-  });
-}
-
-class _NavItem extends StatelessWidget {
+class _NavItem
+    extends StatelessWidget {
   final IconData icon;
   final String label;
   final bool active;
@@ -550,7 +585,9 @@ class _NavItem extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -561,11 +598,9 @@ class _NavItem extends StatelessWidget {
             icon,
             color: active
                 ? const Color(
-                    0xFF6A4429,
-                  )
+                    0xFF6A4429),
                 : const Color(
-                    0xFF8E7868,
-                  ),
+                    0xFF8E7868),
             size: 22,
           ),
           const SizedBox(height: 4),
@@ -574,11 +609,9 @@ class _NavItem extends StatelessWidget {
             style: TextStyle(
               color: active
                   ? const Color(
-                      0xFF6A4429,
-                    )
+                      0xFF6A4429)
                   : const Color(
-                      0xFF8E7868,
-                    ),
+                      0xFF8E7868),
               fontSize: 10,
               fontWeight: active
                   ? FontWeight.w800
