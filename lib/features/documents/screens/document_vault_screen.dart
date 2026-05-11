@@ -34,7 +34,7 @@ class _DocumentVaultScreenState
           ),
           const SizedBox(height: 16),
           const Text(
-            'Your secure\ndigital filing cabinet.',
+            'Your private\nluxury archive.',
             style: TextStyle(
               color: Color(0xFF2F241E),
               fontSize: 28,
@@ -44,7 +44,7 @@ class _DocumentVaultScreenState
           ),
           const SizedBox(height: 12),
           const Text(
-            'Store warranties, court papers, IDs, receipts, insurance, medical files, contracts, and important life documents.',
+            'Securely organize personal documents, legal paperwork, warranties, IDs, school files, receipts, and important records.',
             style: TextStyle(
               color: Color(0xFF7B6657),
               fontSize: 14,
@@ -62,10 +62,10 @@ class _DocumentVaultScreenState
     );
   }
 
-  Widget _vaultFolder({
-    required IconData icon,
+  Widget _folderCard({
     required String title,
     required String subtitle,
+    required IconData icon,
     required String count,
   }) {
     return GlassCard(
@@ -74,20 +74,26 @@ class _DocumentVaultScreenState
       child: Row(
         children: [
           Container(
-            width: 62,
-            height: 62,
+            width: 68,
+            height: 68,
             decoration: BoxDecoration(
               borderRadius:
-                  BorderRadius.circular(20),
-              color: const Color(
-                0xFF8A6548,
-              ).withOpacity(0.16),
+                  BorderRadius.circular(22),
+              gradient:
+                  const LinearGradient(
+                begin: Alignment.topLeft,
+                end:
+                    Alignment.bottomRight,
+                colors: [
+                  Color(0xFF9A765C),
+                  Color(0xFF6A4B38),
+                ],
+              ),
             ),
             child: Icon(
               icon,
-              color:
-                  const Color(0xFF6A4429),
-              size: 30,
+              color: Colors.white,
+              size: 32,
             ),
           ),
           const SizedBox(width: 16),
@@ -125,7 +131,7 @@ class _DocumentVaultScreenState
                 count,
                 style: const TextStyle(
                   color: Color(0xFF2F241E),
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight:
                       FontWeight.w900,
                 ),
@@ -147,7 +153,7 @@ class _DocumentVaultScreenState
     );
   }
 
-  Widget _insightCard() {
+  Widget _securityCard() {
     return GlassCard(
       radius: 32,
       opacity: 0.44,
@@ -156,16 +162,17 @@ class _DocumentVaultScreenState
             CrossAxisAlignment.start,
         children: [
           const Text(
-            'Smart AI Organization',
+            'Biometric Security',
             style: TextStyle(
               color: Color(0xFF2F241E),
               fontSize: 22,
-              fontWeight: FontWeight.w800,
+              fontWeight:
+                  FontWeight.w800,
             ),
           ),
           const SizedBox(height: 10),
           const Text(
-            'Your app will eventually scan and detect document types automatically before saving them into organized secure folders.',
+            'Protect sensitive documents with fingerprint, Face ID, PIN protection, and encrypted storage.',
             style: TextStyle(
               color: Color(0xFF7B6657),
               fontSize: 13,
@@ -175,24 +182,31 @@ class _DocumentVaultScreenState
           const SizedBox(height: 18),
           Container(
             padding:
-                const EdgeInsets.all(18),
-            decoration: BoxDecoration(
+                const EdgeInsets.all(
+              18,
+            ),
+            decoration:
+                BoxDecoration(
               borderRadius:
-                  BorderRadius.circular(24),
+                  BorderRadius.circular(
+                24,
+              ),
               color: Colors.white
-                  .withOpacity(0.26),
+                  .withOpacity(
+                0.24,
+              ),
             ),
             child: const Row(
               children: [
                 Icon(
-                  Icons.auto_awesome,
+                  Icons.shield_outlined,
                   color:
                       Color(0xFF6A4429),
                 ),
                 SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    '“This appears to be a medical document. Confirm?”',
+                    'Your vault is securely encrypted and protected.',
                     style: TextStyle(
                       color: Color(
                           0xFF2F241E),
@@ -211,7 +225,81 @@ class _DocumentVaultScreenState
     );
   }
 
-  Widget _bottomNav(BuildContext context) {
+  Widget _scannerInsightCard() {
+    return GlassCard(
+      radius: 32,
+      opacity: 0.44,
+      child: Column(
+        crossAxisAlignment:
+            CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Smart AI Scanner',
+            style: TextStyle(
+              color: Color(0xFF2F241E),
+              fontSize: 22,
+              fontWeight:
+                  FontWeight.w800,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            'Your app can eventually detect and categorize receipts, legal paperwork, medical files, warranties, tax forms, and more.',
+            style: TextStyle(
+              color: Color(0xFF7B6657),
+              fontSize: 13,
+              height: 1.45,
+            ),
+          ),
+          const SizedBox(height: 18),
+          Container(
+            padding:
+                const EdgeInsets.all(
+              18,
+            ),
+            decoration:
+                BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(
+                24,
+              ),
+              color: Colors.white
+                  .withOpacity(
+                0.24,
+              ),
+            ),
+            child: const Row(
+              children: [
+                Icon(
+                  Icons.auto_awesome,
+                  color:
+                      Color(0xFF6A4429),
+                ),
+                SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    '“Possible match: Vehicle warranty document.”',
+                    style: TextStyle(
+                      color: Color(
+                          0xFF2F241E),
+                      fontSize: 13,
+                      fontWeight:
+                          FontWeight
+                              .w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _bottomNav(
+    BuildContext context,
+  ) {
     return Container(
       height: 74,
       padding:
@@ -219,23 +307,25 @@ class _DocumentVaultScreenState
         horizontal: 12,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(
-          0.42,
-        ),
+        color: Colors.white
+            .withOpacity(0.42),
         borderRadius:
-            BorderRadius.circular(28),
+            BorderRadius.circular(
+          28,
+        ),
         border: Border.all(
-          color: Colors.white.withOpacity(
-            0.55,
-          ),
+          color: Colors.white
+              .withOpacity(0.55),
         ),
       ),
       child: Row(
         mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
+            MainAxisAlignment
+                .spaceAround,
         children: [
           _NavItem(
-            icon: Icons.home_outlined,
+            icon:
+                Icons.home_outlined,
             label: 'home',
             onTap: () {
               context.go('/home');
@@ -243,13 +333,14 @@ class _DocumentVaultScreenState
           ),
           _NavItem(
             icon:
-                Icons.folder_outlined,
+                Icons.folder_copy_outlined,
             label: 'vault',
             active: true,
             onTap: () {},
           ),
           _NavItem(
-            icon: Icons.article_outlined,
+            icon:
+                Icons.article_outlined,
             label: 'journal',
             onTap: () {
               context.go('/journal');
@@ -257,10 +348,10 @@ class _DocumentVaultScreenState
           ),
           _NavItem(
             icon:
-                Icons.favorite_border,
-            label: 'health',
+                Icons.auto_awesome,
+            label: 'assistant',
             onTap: () {
-              context.go('/health');
+              context.go('/assistant');
             },
           ),
           _NavItem(
@@ -276,10 +367,22 @@ class _DocumentVaultScreenState
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Scaffold(
       backgroundColor:
           const Color(0xFFE8DED2),
+      floatingActionButton:
+          FloatingActionButton(
+        backgroundColor:
+            const Color(0xFF8A5C34),
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
       body: ScenicBackground(
         child: SafeArea(
           child: Padding(
@@ -296,12 +399,15 @@ class _DocumentVaultScreenState
                   children: [
                     IconButton(
                       onPressed: () {
-                        context.go('/menu');
+                        context.go(
+                          '/menu',
+                        );
                       },
                       icon: const Icon(
                         Icons
                             .arrow_back_ios_new,
-                        color: Colors.white,
+                        color:
+                            Colors.white,
                         size: 18,
                       ),
                     ),
@@ -309,10 +415,12 @@ class _DocumentVaultScreenState
                       child: Center(
                         child: Text(
                           'Document Vault',
-                          style: TextStyle(
-                            color:
-                                Colors.white,
-                            fontSize: 18,
+                          style:
+                              TextStyle(
+                            color: Colors
+                                .white,
+                            fontSize:
+                                18,
                             fontWeight:
                                 FontWeight
                                     .w600,
@@ -325,13 +433,15 @@ class _DocumentVaultScreenState
                       height: 42,
                       decoration:
                           BoxDecoration(
-                        shape:
-                            BoxShape.circle,
-                        color: Colors.white
+                        shape: BoxShape
+                            .circle,
+                        color: Colors
+                            .white
                             .withOpacity(
                           0.22,
                         ),
-                        border: Border.all(
+                        border:
+                            Border.all(
                           color: Colors
                               .white
                               .withOpacity(
@@ -339,9 +449,11 @@ class _DocumentVaultScreenState
                           ),
                         ),
                       ),
-                      child: const Icon(
+                      child:
+                          const Icon(
                         Icons.lock_outline,
-                        color: Colors.white,
+                        color: Colors
+                            .white,
                         size: 22,
                       ),
                     ),
@@ -354,12 +466,16 @@ class _DocumentVaultScreenState
                         height: 18,
                       ),
                       const Text(
-                        'Secure\nvault.',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 34,
+                        'Private\nvault.',
+                        style:
+                            TextStyle(
+                          color: Colors
+                              .white,
+                          fontSize:
+                              34,
                           fontWeight:
-                              FontWeight.w600,
+                              FontWeight
+                                  .w600,
                           height: 1.05,
                         ),
                       ),
@@ -367,11 +483,14 @@ class _DocumentVaultScreenState
                         height: 10,
                       ),
                       const Text(
-                        'Your important life documents beautifully protected.',
-                        style: TextStyle(
-                          color:
-                              Color(0xFFF0E6DE),
-                          fontSize: 14,
+                        'Luxury document organization.',
+                        style:
+                            TextStyle(
+                          color: Color(
+                            0xFFF0E6DE,
+                          ),
+                          fontSize:
+                              14,
                         ),
                       ),
                       const SizedBox(
@@ -381,59 +500,63 @@ class _DocumentVaultScreenState
                       const SizedBox(
                         height: 20,
                       ),
-                      _vaultFolder(
-                        icon:
-                            Icons.gavel_outlined,
+                      _folderCard(
                         title:
                             'Legal Documents',
                         subtitle:
-                            'Court papers, agreements, legal notices, and records.',
-                        count:
-                            '12',
-                      ),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      _vaultFolder(
+                            'Court records, agreements, contracts, and legal paperwork.',
                         icon:
-                            Icons.health_and_safety_outlined,
-                        title:
-                            'Medical Records',
-                        subtitle:
-                            'Insurance, prescriptions, labs, and medical history.',
+                            Icons.gavel_outlined,
                         count:
                             '24',
                       ),
                       const SizedBox(
                         height: 14,
                       ),
-                      _vaultFolder(
-                        icon:
-                            Icons.receipt_long_outlined,
+                      _folderCard(
                         title:
-                            'Receipts & Warranties',
+                            'Medical Records',
                         subtitle:
-                            'Purchase receipts, warranties, and proof of ownership.',
+                            'Health documents, insurance, prescriptions, and labs.',
+                        icon:
+                            Icons.medical_services_outlined,
                         count:
                             '38',
                       ),
                       const SizedBox(
                         height: 14,
                       ),
-                      _vaultFolder(
-                        icon:
-                            Icons.badge_outlined,
+                      _folderCard(
                         title:
-                            'Personal IDs',
+                            'Receipts & Warranties',
                         subtitle:
-                            'Licenses, certificates, passports, and identification.',
+                            'Purchase records, receipts, serial numbers, and warranties.',
+                        icon:
+                            Icons.receipt_long_outlined,
                         count:
-                            '9',
+                            '82',
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      _folderCard(
+                        title:
+                            'School & Certifications',
+                        subtitle:
+                            'Degrees, CNA license, transcripts, and certifications.',
+                        icon:
+                            Icons.school_outlined,
+                        count:
+                            '18',
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      _insightCard(),
+                      _securityCard(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      _scannerInsightCard(),
                       const SizedBox(
                         height: 90,
                       ),
@@ -450,7 +573,8 @@ class _DocumentVaultScreenState
   }
 }
 
-class _NavItem extends StatelessWidget {
+class _NavItem
+    extends StatelessWidget {
   final IconData icon;
   final String label;
   final bool active;
@@ -464,7 +588,9 @@ class _NavItem extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -475,11 +601,9 @@ class _NavItem extends StatelessWidget {
             icon,
             color: active
                 ? const Color(
-                    0xFF6A4429,
-                  )
+                    0xFF6A4429),
                 : const Color(
-                    0xFF8E7868,
-                  ),
+                    0xFF8E7868),
             size: 22,
           ),
           const SizedBox(height: 4),
@@ -488,11 +612,9 @@ class _NavItem extends StatelessWidget {
             style: TextStyle(
               color: active
                   ? const Color(
-                      0xFF6A4429,
-                    )
+                      0xFF6A4429)
                   : const Color(
-                      0xFF8E7868,
-                    ),
+                      0xFF8E7868),
               fontSize: 10,
               fontWeight: active
                   ? FontWeight.w800
