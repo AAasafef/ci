@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/activity/screens/activity_screen.dart';
+import '../../features/assistant/screens/assistant_screen.dart';
 import '../../features/beauty/screens/beauty_screen.dart';
 import '../../features/calendar/screens/calendar_screen.dart';
 import '../../features/documents/screens/document_vault_screen.dart';
@@ -11,6 +12,7 @@ import '../../features/finance/screens/finance_screen.dart';
 import '../../features/fitness/screens/fitness_screen.dart';
 import '../../features/food/screens/food_tracker_screen.dart';
 import '../../features/goals/screens/goals_screen.dart';
+import '../../features/habits/screens/habits_screen.dart';
 import '../../features/health/screens/health_dashboard_screen.dart';
 import '../../features/home/screens/home_dashboard_screen.dart';
 import '../../features/journal/screens/journal_screen.dart';
@@ -53,6 +55,8 @@ final GoRouter appRouter = GoRouter(
     GoRoute(path: '/beauty', builder: (context, state) => const BeautyScreen()),
     GoRoute(path: '/library', builder: (context, state) => const LibraryScreen()),
     GoRoute(path: '/travel', builder: (context, state) => const TravelScreen()),
+    GoRoute(path: '/habits', builder: (context, state) => const HabitsScreen()),
+    GoRoute(path: '/assistant', builder: (context, state) => const AssistantScreen()),
   ],
 );
 
